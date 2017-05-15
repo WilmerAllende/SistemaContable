@@ -1,0 +1,12 @@
+- select_list = { 'DEBE': 1,'HABER':  2}
+.nested-fields.row.middle-md
+	.col-md-3.col-sm-2.col-xs-6
+		= f.association :account, prompt: "Seleccione Cuenta"
+	.col-md-3.col-sm-3.col-xs-6
+		= f.input :referencia_m
+	.col-md-2.col-sm-2.col-xs-4
+		= f.input :monto,required: true
+	.col-md-2.col-sm-2.col-xs-4
+		= f.input :tipo,  collection: select_list, prompt: "Seleccione",required: true, input_html: { class: '' },label_html: { class: '' }
+	.col-md-2.col-sm-3.col-xs-4.middle
+		= link_to_remove_association "Eliminar", f , class:  "btn btn-danger"

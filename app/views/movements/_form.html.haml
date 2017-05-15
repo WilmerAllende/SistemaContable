@@ -1,0 +1,15 @@
+= simple_form_for(@movement, html: { class: 'form-horizontal' }) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :fecha
+    = f.input :comentario
+  #Deals
+  .container
+    %h2 Transferencia
+    = f.simple_fields_for :deals do |deal|
+      = render 'deal_fields', f: deal
+    .links
+      = link_to_add_association 'Agregar tranferencia', f, :deals , class: "btn btn-success"
+  %br
+  .form-actions
+    = f.button :submit, class: "btn btn-primary"

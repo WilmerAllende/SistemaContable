@@ -28,7 +28,8 @@ class MovementsController < ApplicationController
 
     respond_to do |format|
       if @movement.save
-        format.html { redirect_to @movement, notice: 'Movement was successfully created.' }
+        format.html { redirect_to @movement }
+        flash[:notice] = "Movimiento creado con exito"
         format.json { render :show, status: :created, location: @movement }
       else
         format.html { render :new }
@@ -42,7 +43,8 @@ class MovementsController < ApplicationController
   def update
     respond_to do |format|
       if @movement.update(movement_params)
-        format.html { redirect_to @movement, notice: 'Movement was successfully updated.' }
+        format.html { redirect_to @movement }
+        flash[:notice] = "Movimiento modificado con exito"
         format.json { render :show, status: :ok, location: @movement }
       else
         format.html { render :edit }
@@ -56,7 +58,8 @@ class MovementsController < ApplicationController
   def destroy
     @movement.destroy
     respond_to do |format|
-      format.html { redirect_to movements_url, notice: 'Movement was successfully destroyed.' }
+      format.html { redirect_to movements_url}
+      flash[:notice] = "Movimiento eliminado con exito"
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,7 @@ class MovementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movement_params
-      params.require(:movement).permit(:fecha, :comentario)
+      params.require(:movement).permit(:fecha, :comentario,
+        deals_attributes: [:id, :account_id, :referencia_m, :tipo, :monto ,:_destroy])
     end
 end

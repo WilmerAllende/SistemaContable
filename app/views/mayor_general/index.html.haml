@@ -1,0 +1,53 @@
+%h1
+  Mayor General
+.container
+  -@transacciones2.each do |cuenta|
+    .row.center
+      .table-responsive
+        %table.table.text-center{ :border =>1}
+          %thead
+            %tr{ :style=>"background-color: #BCF5A9;"}
+              %th{ :colspan =>4} 
+                =cuenta.name
+              %th 
+                = cuenta.codigo
+            %tr
+              %th.tb-row Fecha
+              %th.tb-row Referencia
+              %th.tb-row Debe
+              %th.tb-row Haber
+              %Th.tb-row Saldo
+          %tbody
+            -@suma=0.00
+            - @transacciones.each do |transacciones|
+              - if cuenta.cuenta == transacciones.cuenta 
+                %tr
+                  %td.tb-row
+                    - transacciones.fecha
+                    = DateTime.now.strftime("%Y-%d-%m")
+                  %td.tb-row 
+                    = transacciones.referencia
+                  -if transacciones.tipo == 1
+                    %td.tb-color3
+                      = transacciones.monto
+                    %td.tb-row2
+                    -@suma+=transacciones.monto
+                  -else
+                    %td.tb-color3
+                    %td.tb-row2
+                      = transacciones.monto
+                    -@suma-=transacciones.monto
+                  %td.tb-color3
+                    - @monto = eval(sprintf("%8.1f",@suma)) 
+                    -if @monto < 0
+                      -@cambio = @monto + -(2*@monto)
+                      = @cambio
+                    - else  
+                      = @monto
+            %tr
+              %td.text-center.tb-row{ :colspan =>4} Saldo antes de ajuste
+              %td.tb-color3
+                - if @monto < 0 
+                  = @cambio
+                -else
+                  = @monto 

@@ -3,12 +3,46 @@
   <head>
     <title>SistemaContable</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/js/jqBootstrapValidation.js"></script>
+ <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%=link_to 'Logo', root_path, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class=""><%=link_to 'Home', root_path %></li>
+        <li><%=link_to 'Cuenta', accounts_path %></li>
+        <li><%=link_to 'Transferencia', movements_path %></li>
+        <li><%=link_to 'Mayor General', mayor_general_index_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<% flash.each do |key, value| %>
+  <div class="text-center <%= flash_class(key) %>">
+    <%= value %>
+  </div>
+<% end %>
+
     <%= yield %>
+<!-- <footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer> -->
   </body>
 </html>

@@ -16,3 +16,6 @@
 //= require cocoon
 //= require turbolinks
 //= require_tree .
+
+//$('#myForm').validator()
+//$(function () { $("input").not("[type=submit]").jqBootstrapValidation(); } );

@@ -1,0 +1,2 @@
+module MayorGeneralHelper
+end

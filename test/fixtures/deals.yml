@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  referencia_m: MyString
+  tipo: 1
+  monto: 9.99
+  movement: one
+
+two:
+  account: two
+  referencia_m: MyString
+  tipo: 1
+  monto: 9.99
+  movement: two

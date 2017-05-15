@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Accounts</h1>
-
-<table>
+<div class="table-responsive">
+<table class="table">
   <thead>
     <tr>
       <th>Codigo</th>
@@ -17,7 +17,6 @@
       <tr>
         <td><%= account.codigo %></td>
         <td><%= account.name %></td>
-        <td><%= account.descripcion %></td>
         <td><%= link_to 'Show', account %></td>
         <td><%= link_to 'Edit', edit_account_path(account) %></td>
         <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,7 +24,7 @@
     <% end %>
   </tbody>
 </table>
-
+</div>
 <br>
 
-<%= link_to 'New Account', new_account_path %>
+<%= link_to 'New Account', new_account_path, class:"btn btn-success" %>
