@@ -19,3 +19,12 @@
 
 //$('#myForm').validator()
 //$(function () { $("input").not("[type=submit]").jqBootstrapValidation(); } );
+$(document).on("turbolinks:load", function() {
+ //var btn = document.getElementById("btn");
+ //btn.addEventListener('click',function(){
+   //Push.create('Cuenta creada con exito!',{
+   	//timeout: 4000
+   //})
+ //});
+
+});

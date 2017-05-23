@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/js/jqBootstrapValidation.js"></script>
  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -34,6 +33,8 @@
     </div>
   </div>
 </nav>
+
+
 <% flash.each do |key, value| %>
   <div class="text-center <%= flash_class(key) %>">
     <%= value %>

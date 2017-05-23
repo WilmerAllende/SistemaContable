@@ -29,10 +29,11 @@ class AccountsController < ApplicationController
     respond_to do |format|
       if @account.save
         format.html { redirect_to @account}
-        flash[:notice] = "Movimiento creado con exito"
+        flash[:notice] = "Cuenta creado con exito"
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
+        flash[:alert] = "Cuenta no creado"
         format.json { render json: @account.errors, status: :unprocessable_entity }
       end
     end

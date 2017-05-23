@@ -12,11 +12,11 @@
               %th 
                 = cuenta.codigo
             %tr
-              %th.tb-row Fecha
-              %th.tb-row Referencia
-              %th.tb-row Debe
-              %th.tb-row Haber
-              %Th.tb-row Saldo
+              %th.tb-row.text-center Fecha
+              %th.tb-row.text-center Referencia
+              %th.tb-color3.text-center Debe
+              %th.tb-row2.text-center Haber
+              %th.tb-color3.text-center Saldo
           %tbody
             -@suma=0.00
             - @transacciones.each do |transacciones|
@@ -24,9 +24,8 @@
                 %tr
                   %td.tb-row
                     - transacciones.fecha
-                    = DateTime.now.strftime("%Y-%d-%m")
+                    = transacciones.fecha_movements
                   %td.tb-row 
-                    = transacciones.referencia
                   -if transacciones.tipo == 1
                     %td.tb-color3
                       = transacciones.monto
