@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require typeahead.bundle
 //= require cocoon
 //= require turbolinks
 //= require_tree .

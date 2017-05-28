@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
-
 <h1>Accounts</h1>
+
+<%= form_tag(accounts_path, method: :get, class: "form-inline", role: 'search') do %>
+  <div class="input-group">              
+    <%= text_field_tag :term, 
+        params[:term], 
+        id: 'movies_search', 
+        autocomplete: :off, 
+        placeholder: 'Search', 
+        class: 'form-control' %>
+    <div class="input-group-btn search-panel">
+      <%= link_to 'Clear', root_url, class: "btn btn-default" %>
+      <%= submit_tag 'Search', name: nil, class: "btn btn-default" %>
+    </div>
+  </div>
+<% end %>
+
 <div class="table-responsive">
 <table class="table">
   <thead>
@@ -24,6 +39,7 @@
     <% end %>
   </tbody>
 </table>
+<%= paginate @accounts %>
 </div>
 <br>
 

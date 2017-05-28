@@ -1,0 +1,52 @@
+%h1
+  Balance de Comprobacion
+.container
+  .row.center
+    .table-responsive
+      %table.table{ :border =>1}
+        %thead
+          %tr{ :style=>"background-color: #BCF5A9;"}
+            %th.text-center{ :colspan =>4}
+              Balance de Comprobacion antes de ajuste
+          %tr
+            %th.tb-row.text-center Codigo
+            %th.tb-row.text-center Cuenta
+            %th.tb-color3.text-center Debe
+            %th.tb-row2.text-center Haber
+        %tbody
+          - @suma_debe=0
+          - @suma_haber = 0
+          - @transacciones2.each do |transaccion|
+            %tr
+              %td.tb-row.text-center
+                = transaccion.codigo
+              %td.tb-row 
+                = transaccion.name
+              - if transaccion.sum_debe.nil?
+                - transaccion.sum_debe = 0
+              -if transaccion.sum_haber.nil?
+                - transaccion.sum_haber = 0
+              - resultado = transaccion.sum_debe - transaccion.sum_haber
+              - flotante = eval(sprintf("%8.1f",resultado))
+              - if flotante > 0
+                %td.tb-color3.text-center
+                  - @suma_debe += flotante
+                  = flotante
+                %td.tb-row2
+              -else
+                %td.tb-color3
+                %td.tb-row2.text-center
+                  - cambio = flotante + -(2*flotante)
+                  - @suma_haber -= flotante
+                  = cambio
+          %tr
+            %td.tb-row.text-center{ :colspan =>2}
+              Totales
+            %td.tb-color3.text-center
+              %b
+                $
+                = eval(sprintf("%8.1f",@suma_debe))
+            %td.tb-row2.text-center
+              %b
+                $
+                =eval(sprintf("%8.1f",@suma_haber))

@@ -4,7 +4,25 @@ class AccountsController < ApplicationController
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    search = params[:term].present? ? params[:term] : nil
+    @accounts = if search
+      buscar = "%#{search}%"
+      #Account.where("codigo LIKE ? OR name LIKE ?",buscar,buscar)
+      #Account.search(search)
+      Account.search "#{search}", page: params[:page], per_page: 4
+    else
+      Account.limit(5).page params[:page]
+    end
+  end
+
+  def autocomplete
+    render json: Account.search(params[:query], {
+      fields: ["codigo", "name"],
+      match: :word_start,
+      limit: 10,
+      load: false,
+      misspellings: {below: 5}
+    }).map(&:name)
   end
 
   # GET /accounts/1
