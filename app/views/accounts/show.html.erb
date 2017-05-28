@@ -15,14 +15,3 @@
 <%= link_to 'Back', accounts_path %>
 </div>
 
-<script type="text/javascript">
-    Push.create('<%= @account.name  %> ',{
-    body: "Cuenta registrada con exito",
-    icon: 'http://www.d-side.biz/skin/frontend/novarese/default/images/ico-account.png',
-    timeout: 5000,
-    onClick: function () {
-        window.location= "<%= accounts_path %>";
-        this.close();
-    }
-   })
-  </script>
